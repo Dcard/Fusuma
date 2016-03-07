@@ -16,6 +16,7 @@ public protocol FusumaDelegate: class {
     func FusumaViewControllerDidLoad(controller: FusumaViewController)
 }
 
+public var fusumDefaultColor     = UIColor.hex("#ffffff", alpha: 1.0)
 public var fusumaTintColor       = UIColor.hex("#009688", alpha: 1.0)
 public var fusumaBackgroundColor = UIColor.hex("#212121", alpha: 1.0)
 
@@ -204,12 +205,13 @@ public final class FusumaViewController: UIViewController, FSCameraViewDelegate,
     
     func dishighlightButtons() {
         
-        
+        self.cameraButton.tintColor = fusumDefaultColor.colorWithAlphaComponent(0.75)
+        self.libraryButton.tintColor = fusumDefaultColor.colorWithAlphaComponent(0.75)
     }
     
     func highlightButton(button: UIButton) {
         
-        
+        button.tintColor = fusumaTintColor
     }
     
     // MARK: FSCameraViewDelegate
