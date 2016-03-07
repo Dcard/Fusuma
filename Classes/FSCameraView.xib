@@ -33,7 +33,7 @@
                                 <action selector="shotButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="NK4-1d-Pf0"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cf2-eo-TZZ">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cf2-eo-TZZ">
                             <rect key="frame" x="15" y="55" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="Wbh-0c-uHY"/>
@@ -45,7 +45,7 @@
                                 <action selector="flipButtonPressed:" destination="iN0-l3-epB" eventType="touchUpInside" id="zY0-B4-jSZ"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De1-Cg-kBb">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="De1-Cg-kBb">
                             <rect key="frame" x="345" y="55" width="40" height="40"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="40" id="g0F-ZH-8j6"/>

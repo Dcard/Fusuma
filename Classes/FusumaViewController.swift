@@ -204,40 +204,12 @@ public final class FusumaViewController: UIViewController, FSCameraViewDelegate,
     
     func dishighlightButtons() {
         
-        cameraButton.tintColor  = UIColor.whiteColor()
-        libraryButton.tintColor = UIColor.whiteColor()
-        
-        if cameraButton.layer.sublayers?.count > 1 {
-            
-            for layer in cameraButton.layer.sublayers! {
-                
-                if let borderColor = layer.borderColor where UIColor(CGColor: borderColor) == fusumaTintColor {
-                    
-                    layer.removeFromSuperlayer()
-                }
-                
-            }
-        }
-        
-        if libraryButton.layer.sublayers?.count > 1 {
-            
-            for layer in libraryButton.layer.sublayers! {
-                
-                if let borderColor = layer.borderColor where UIColor(CGColor: borderColor) == fusumaTintColor {
-                    
-                    layer.removeFromSuperlayer()
-                }
-                
-            }
-        }
         
     }
     
     func highlightButton(button: UIButton) {
         
-        button.tintColor = fusumaTintColor
         
-        button.addBottomBorder(fusumaTintColor, width: 3)
     }
     
     // MARK: FSCameraViewDelegate
