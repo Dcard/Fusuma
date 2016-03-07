@@ -14,7 +14,7 @@ public protocol FSAlbumViewDelegate: class {
     func albumViewCameraRollUnauthorized()
 }
 
-final class FSAlbumView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, PHPhotoLibraryChangeObserver, UIGestureRecognizerDelegate {
+public final class FSAlbumView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, PHPhotoLibraryChangeObserver, UIGestureRecognizerDelegate {
     
     @IBOutlet public weak var collectionView: UICollectionView!
     @IBOutlet public weak var imageCropView: FSImageCropView!

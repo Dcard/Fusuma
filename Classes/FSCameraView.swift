@@ -13,7 +13,7 @@ protocol FSCameraViewDelegate: class {
     func cameraShotFinished(image: UIImage)
 }
 
-final class FSCameraView: UIView, UIGestureRecognizerDelegate {
+public final class FSCameraView: UIView, UIGestureRecognizerDelegate {
 
     @IBOutlet public weak var previewViewContainer: UIView!
     @IBOutlet public weak var shotButton: UIButton!
