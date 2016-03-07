@@ -90,7 +90,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CAMERA ROLL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cxN-Q8-Lgd">
-                            <rect key="frame" x="248" y="17" width="105" height="21"/>
+                            <rect key="frame" x="248" y="15" width="105" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="21" id="JDW-4S-H17"/>
                             </constraints>
@@ -114,7 +114,7 @@
                         <constraint firstItem="Dx0-Tt-oZs" firstAttribute="centerY" secondItem="8ba-kc-jlJ" secondAttribute="centerY" id="JRE-yi-cM3"/>
                         <constraint firstItem="cxN-Q8-Lgd" firstAttribute="centerX" secondItem="8ba-kc-jlJ" secondAttribute="centerX" id="Xfk-Fq-1iH"/>
                         <constraint firstItem="5iB-Jh-kTh" firstAttribute="top" secondItem="8ba-kc-jlJ" secondAttribute="top" constant="6" id="dqA-0U-VSM"/>
-                        <constraint firstItem="cxN-Q8-Lgd" firstAttribute="centerY" secondItem="8ba-kc-jlJ" secondAttribute="centerY" constant="2" id="lmi-EB-0zz"/>
+                        <constraint firstItem="cxN-Q8-Lgd" firstAttribute="centerY" secondItem="8ba-kc-jlJ" secondAttribute="centerY" id="lmi-EB-0zz"/>
                         <constraint firstItem="5iB-Jh-kTh" firstAttribute="centerY" secondItem="8ba-kc-jlJ" secondAttribute="centerY" id="opK-8C-KBZ"/>
                         <constraint firstItem="Dx0-Tt-oZs" firstAttribute="top" secondItem="8ba-kc-jlJ" secondAttribute="top" constant="8" id="phx-7N-5Ks"/>
                     </constraints>
