@@ -50,8 +50,8 @@ public final class FusumaViewController: UIViewController, FSCameraViewDelegate,
     }
     public var photoTitle = "PHOTO" {
         didSet {
-            if self.mode == Mode.PHOTO {
-                self.titleLabel.text = self.PHOTO
+            if self.mode == Mode.Camera {
+                self.titleLabel.text = self.photoTitle
             }
         }
     }
@@ -113,7 +113,7 @@ public final class FusumaViewController: UIViewController, FSCameraViewDelegate,
         doneButton.tintColor = UIColor.whiteColor()
         
         self.delegate?.FusumaViewControllerDidLoad(self)
-        self.didLoadCallBack?(self)
+        self.didLoadCallBack?(viewController: self)
     }
     
     override public func viewWillAppear(animated: Bool) {

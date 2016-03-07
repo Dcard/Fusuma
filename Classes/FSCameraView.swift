@@ -106,7 +106,7 @@ public final class FSCameraView: UIView, UIGestureRecognizerDelegate {
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "willEnterForegroundNotification:", name: UIApplicationWillEnterForegroundNotification, object: nil)
         
-        self.didSetupCallBack?(self)
+        self.didSetupCallBack?(view: self)
     }
     
     deinit {

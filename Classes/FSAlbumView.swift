@@ -17,8 +17,8 @@ public protocol FSAlbumViewDelegate: class {
 public final class FSAlbumView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, PHPhotoLibraryChangeObserver, UIGestureRecognizerDelegate {
     
     @IBOutlet public weak var collectionView: UICollectionView!
-    @IBOutlet public weak var imageCropView: FSImageCropView!
-    @IBOutlet public weak var imageCropViewContainer: UIView!
+    @IBOutlet weak var imageCropView: FSImageCropView!
+    @IBOutlet weak var imageCropViewContainer: UIView!
     
     @IBOutlet public weak var collectionViewConstraintHeight: NSLayoutConstraint!
     @IBOutlet public weak var imageCropViewConstraintTop: NSLayoutConstraint!
@@ -97,7 +97,7 @@ public final class FSAlbumView: UIView, UICollectionViewDataSource, UICollection
         
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
         
-        self.didSetupCallBack?(self)
+        self.didSetupCallBack?(view: self)
     }
     
     deinit {
@@ -108,7 +108,7 @@ public final class FSAlbumView: UIView, UICollectionViewDataSource, UICollection
         }
     }
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    public func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         
         return true
     }
@@ -255,7 +255,7 @@ public final class FSAlbumView: UIView, UICollectionViewDataSource, UICollection
     }
     
     // MARK: - UICollectionViewDelegate Protocol
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    public func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("FSAlbumViewCell", forIndexPath: indexPath) as! FSAlbumViewCell
         
@@ -277,13 +277,12 @@ public final class FSAlbumView: UIView, UICollectionViewDataSource, UICollection
         
         return cell
     }
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+    public func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         
         return 1
     }
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         return images == nil ? 0 : images.count
     }
@@ -294,7 +293,7 @@ public final class FSAlbumView: UIView, UICollectionViewDataSource, UICollection
         return CGSize(width: width, height: width)
     }
     
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+    public func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         changeImage(images[indexPath.row] as! PHAsset)
         
@@ -337,7 +336,7 @@ public final class FSAlbumView: UIView, UICollectionViewDataSource, UICollection
     }
     
     // MARK: - ScrollViewDelegate
-    func scrollViewDidScroll(scrollView: UIScrollView) {
+    public func scrollViewDidScroll(scrollView: UIScrollView) {
         
         if scrollView == collectionView {
             self.updateCachedAssets()
@@ -346,7 +345,7 @@ public final class FSAlbumView: UIView, UICollectionViewDataSource, UICollection
     
     
     //MARK: - PHPhotoLibraryChangeObserver
-    func photoLibraryDidChange(changeInstance: PHChange) {
+    public func photoLibraryDidChange(changeInstance: PHChange) {
         
         dispatch_async(dispatch_get_main_queue()) {
             
