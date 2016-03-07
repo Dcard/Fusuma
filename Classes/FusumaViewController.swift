@@ -13,6 +13,7 @@ public protocol FusumaDelegate: class {
     func fusumaImageSelected(image: UIImage)
     func fusumaDismissedWithImage(image: UIImage)
     func fusumaCameraRollUnauthorized()
+    func FusumaViewControllerDidLoad(controller: FusumaViewController)
 }
 
 public var fusumaTintColor       = UIColor.hex("#009688", alpha: 1.0)
@@ -28,18 +29,34 @@ public final class FusumaViewController: UIViewController, FSCameraViewDelegate,
     var mode: Mode?
     var willFilter = true
 
-    @IBOutlet weak var photoLibraryViewerContainer: UIView!
-    @IBOutlet weak var cameraShotContainer: UIView!
+    @IBOutlet public weak var photoLibraryViewerContainer: UIView!
+    @IBOutlet public weak var cameraShotContainer: UIView!
 
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var menuView: UIView!
-    @IBOutlet weak var closeButton: UIButton!
-    @IBOutlet weak var libraryButton: UIButton!
-    @IBOutlet weak var cameraButton: UIButton!
-    @IBOutlet weak var doneButton: UIButton!
+    @IBOutlet public weak var titleLabel: UILabel!
+    @IBOutlet public weak var menuView: UIView!
+    @IBOutlet public weak var closeButton: UIButton!
+    @IBOutlet public weak var libraryButton: UIButton!
+    @IBOutlet public weak var cameraButton: UIButton!
+    @IBOutlet public weak var doneButton: UIButton!
     
-    var albumView  = FSAlbumView.instance()
-    var cameraView = FSCameraView.instance()
+    public var albumView  = FSAlbumView.instance()
+    public var cameraView = FSCameraView.instance()
+    public var cameraRollTitle = "CAMERA ROLL" {
+        didSet {
+            if self.mode == Mode.Library {
+                self.titleLabel.text = self.cameraRollTitle
+            }
+        }
+    }
+    public var photoTitle = "PHOTO" {
+        didSet {
+            if self.mode == Mode.PHOTO {
+                self.titleLabel.text = self.PHOTO
+            }
+        }
+    }
+    
+    public var didLoadCallBack: ((viewController: FusumaViewController)->())?
     
     public weak var delegate: FusumaDelegate? = nil
     
@@ -93,7 +110,10 @@ public final class FusumaViewController: UIViewController, FSCameraViewDelegate,
         cameraShotContainer.addSubview(cameraView)
         
         doneButton.setImage(checkImage, forState: .Normal)
-        doneButton.tintColor = UIColor.whiteColor()        
+        doneButton.tintColor = UIColor.whiteColor()
+        
+        self.delegate?.FusumaViewControllerDidLoad(self)
+        self.didLoadCallBack?(self)
     }
     
     override public func viewWillAppear(animated: Bool) {
@@ -165,7 +185,7 @@ public final class FusumaViewController: UIViewController, FSCameraViewDelegate,
         
         if mode == Mode.Library {
             
-            titleLabel.text = "CAMERA ROLL"
+            titleLabel.text = self.cameraRollTitle
             doneButton.hidden = false
             
             highlightButton(libraryButton)
@@ -173,7 +193,7 @@ public final class FusumaViewController: UIViewController, FSCameraViewDelegate,
             
         } else {
 
-            titleLabel.text = "PHOTO"
+            titleLabel.text = self.photoTitle
             doneButton.hidden = true
             
             highlightButton(cameraButton)

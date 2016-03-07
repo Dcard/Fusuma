@@ -16,12 +16,14 @@ public protocol FSAlbumViewDelegate: class {
 
 final class FSAlbumView: UIView, UICollectionViewDataSource, UICollectionViewDelegate, PHPhotoLibraryChangeObserver, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var imageCropView: FSImageCropView!
-    @IBOutlet weak var imageCropViewContainer: UIView!
+    @IBOutlet public weak var collectionView: UICollectionView!
+    @IBOutlet public weak var imageCropView: FSImageCropView!
+    @IBOutlet public weak var imageCropViewContainer: UIView!
     
-    @IBOutlet weak var collectionViewConstraintHeight: NSLayoutConstraint!
-    @IBOutlet weak var imageCropViewConstraintTop: NSLayoutConstraint!
+    @IBOutlet public weak var collectionViewConstraintHeight: NSLayoutConstraint!
+    @IBOutlet public weak var imageCropViewConstraintTop: NSLayoutConstraint!
+    
+    public var didSetupCallBack: ((view: FSAlbumView)->())?
     
     weak var delegate: FSAlbumViewDelegate? = nil
     
@@ -95,6 +97,7 @@ final class FSAlbumView: UIView, UICollectionViewDataSource, UICollectionViewDel
         
         PHPhotoLibrary.sharedPhotoLibrary().registerChangeObserver(self)
         
+        self.didSetupCallBack?(self)
     }
     
     deinit {

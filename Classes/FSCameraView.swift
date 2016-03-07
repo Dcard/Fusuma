@@ -15,10 +15,10 @@ protocol FSCameraViewDelegate: class {
 
 final class FSCameraView: UIView, UIGestureRecognizerDelegate {
 
-    @IBOutlet weak var previewViewContainer: UIView!
-    @IBOutlet weak var shotButton: UIButton!
-    @IBOutlet weak var flashButton: UIButton!
-    @IBOutlet weak var flipButton: UIButton!
+    @IBOutlet public weak var previewViewContainer: UIView!
+    @IBOutlet public weak var shotButton: UIButton!
+    @IBOutlet public weak var flashButton: UIButton!
+    @IBOutlet public weak var flipButton: UIButton!
     
     weak var delegate: FSCameraViewDelegate? = nil
     
@@ -27,6 +27,8 @@ final class FSCameraView: UIView, UIGestureRecognizerDelegate {
     var videoInput: AVCaptureDeviceInput?
     var imageOutput: AVCaptureStillImageOutput?
     var focusView: UIView?
+    
+    public var didSetupCallBack: ((view: FSCameraView)->())?
 
     static func instance() -> FSCameraView {
         
@@ -103,6 +105,8 @@ final class FSCameraView: UIView, UIGestureRecognizerDelegate {
         shotButton.setImage(shotImage, forState: .Normal)
 
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "willEnterForegroundNotification:", name: UIApplicationWillEnterForegroundNotification, object: nil)
+        
+        self.didSetupCallBack?(self)
     }
     
     deinit {
