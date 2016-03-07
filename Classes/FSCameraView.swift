@@ -96,11 +96,13 @@ public final class FSCameraView: UIView, UIGestureRecognizerDelegate {
         
         let bundle = NSBundle(forClass: self.classForCoder)
         
-        let flashImage = UIImage(named: "ic_flash_off", inBundle: bundle, compatibleWithTraitCollection: nil)
+        let flashOffImage = UIImage(named: "ic_flash_off", inBundle: bundle, compatibleWithTraitCollection: nil)
+        let flashOnImage = UIImage(named: "ic_flash_on", inBundle: bundle, compatibleWithTraitCollection: nil)
         let flipImage = UIImage(named: "ic_loop", inBundle: bundle, compatibleWithTraitCollection: nil)
         let shotImage = UIImage(named: "ic_radio_button_checked", inBundle: bundle, compatibleWithTraitCollection: nil)
 
-        flashButton.setImage(flashImage, forState: .Normal)
+        flashButton.setImage(flashOffImage, forState: .Normal)
+        flashButton.setImage(flashOnImage, forState: .Selected)
         flipButton.setImage(flipImage, forState: .Normal)
         shotButton.setImage(shotImage, forState: .Normal)
 
@@ -280,12 +282,12 @@ public final class FSCameraView: UIView, UIGestureRecognizerDelegate {
                 if mode == AVCaptureFlashMode.Off {
                     
                     device.flashMode = AVCaptureFlashMode.On
-                    flashButton.setImage(UIImage(named: "ic_flash_on"), forState: .Normal)
+                    self.flashButton.selected = true
                     
                 } else if mode == AVCaptureFlashMode.On {
                     
                     device.flashMode = AVCaptureFlashMode.Off
-                    flashButton.setImage(UIImage(named: "ic_flash_off"), forState: .Normal)
+                    self.flashButton.selected = false
                 }
                 
                 device.unlockForConfiguration()
